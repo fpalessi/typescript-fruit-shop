@@ -1,4 +1,5 @@
 import { Offcanvas, Stack } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 import CartItem from "./CartItem";
@@ -29,7 +30,23 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
                 return total + (item?.price || 0) * cartItem.quantity;
               }, 0)
             )}
-          </div>
+          </div>{" "}
+          <Link to="/checkout">
+            <input
+              type="button"
+              value="CHECKOUT"
+              onClick={closeCart}
+              style={{
+                backgroundColor: "#212529",
+                color: "#fff",
+                fontWeight: "600",
+                width: "100%",
+                height: "50px",
+                border: "1px solid white",
+                borderRadius: "10px",
+              }}
+            />
+          </Link>
         </Stack>
       </Offcanvas.Body>
     </Offcanvas>
